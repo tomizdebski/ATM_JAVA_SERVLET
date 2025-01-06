@@ -1,0 +1,3 @@
+pl/bankomat/model/UserAccount.class
+pl/bankomat/model/ATM.class
+pl/bankomat/BankomatServlet.class
