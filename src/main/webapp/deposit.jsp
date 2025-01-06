@@ -2,49 +2,93 @@
 
 <html>
 <head>
-    <title>Wpłata</title>
+    <title>Wpłata - ATM</title>
     <style>
+      /* RESET i styl ogólny */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
+
       body {
         font-family: Arial, sans-serif;
-        background: #f0f0f2;
+        background: linear-gradient(135deg, #dce2e6, #f2f2f2);
         color: #333;
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
       }
+
+      /* Główna ramka bankomatu (obudowa) */
+      .atm-frame {
+        background: #f8f8f8;
+        border: 10px groove #999;   /* imitacja obudowy bankomatu */
+        border-radius: 25px;
+        width: 480px;
+        height: 620px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      }
+
+      /* Pasek ATM (góra) */
+      .atm-header {
+        background: #4a5055;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 15px 15px 0 0;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      /* Ekran wewnątrz bankomatu */
+      .atm-screen {
+        flex: 1;
+        background: #fff;
+        margin: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Wewnątrz ekranu – Twój dotychczasowy kontener wpłaty */
       .deposit-container {
         background: #fff;
         padding: 2rem;
         border-radius: 8px;
+        width: 100%;
+        max-width: 360px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        width: 360px;
-        max-width: 90%;
       }
+
       .deposit-container h2 {
         font-size: 1.5rem;
         margin-bottom: 1.5rem;
         text-align: center;
       }
+
       .deposit-form {
         display: flex;
         flex-direction: column;
         gap: 1rem;
       }
+
       .deposit-form label {
         font-weight: bold;
       }
+
       .deposit-form input[type="number"] {
         width: 100%;
         padding: 0.5rem;
         border: 1px solid #ccc;
         border-radius: 4px;
       }
+
       .deposit-form button {
         background: #27ae60;
         color: #fff;
@@ -55,14 +99,16 @@
         cursor: pointer;
         transition: background 0.3s ease;
       }
+
       .deposit-form button:hover {
         background: #1d8f4c;
       }
+
       .back-link {
         margin-top: 1rem;
-        display: block;
         text-align: center;
       }
+
       .back-link a {
         color: #3498db;
         text-decoration: none;
@@ -71,20 +117,31 @@
     </style>
 </head>
 <body>
-    <div class="deposit-container">
-        <h2>Wpłata gotówki</h2>
-        <form class="deposit-form" action="BankomatServlet" method="post">
-            <input type="hidden" name="action" value="deposit"/>
-            <div>
-                <label for="amount">Kwota do wpłaty (PLN):</label>
-                <input type="number" name="amount" id="amount" min="0"/>
+    <!-- Ramka bankomatu -->
+    <div class="atm-frame">
+        <!-- Pasek górny -->
+        <div class="atm-header">
+            Bankomat - Wpłata
+        </div>
+        <!-- Ekran wewnętrzny -->
+        <div class="atm-screen">
+            <div class="deposit-container">
+                <h2>Wpłata gotówki</h2>
+                <form class="deposit-form" action="BankomatServlet" method="post">
+                    <input type="hidden" name="action" value="deposit"/>
+                    <div>
+                        <label for="amount">Kwota do wpłaty (PLN):</label>
+                        <input type="number" name="amount" id="amount" min="0"/>
+                    </div>
+                    <button type="submit">Wpłać</button>
+                </form>
+                <p class="back-link">
+                    <a href="home.jsp">Powrót do strony głównej</a>
+                </p>
             </div>
-            <button type="submit">Wpłać</button>
-        </form>
-        <p class="back-link">
-            <a href="home.jsp">Powrót do strony głównej</a>
-        </p>
+        </div>
     </div>
 </body>
 </html>
+
 

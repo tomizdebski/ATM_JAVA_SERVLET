@@ -1,30 +1,68 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-
 <html>
 <head>
-    <title>Wynik operacji</title>
+    <title>Wynik operacji - ATM</title>
     <style>
+      /* RESET i styl ogólny */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
+
       body {
         font-family: Arial, sans-serif;
-        background: #f0f0f2;
+        background: linear-gradient(135deg, #dce2e6, #f2f2f2);
         color: #333;
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
       }
+
+      /* Główna ramka bankomatu (obudowa) */
+      .atm-frame {
+        background: #f8f8f8;
+        border: 10px groove #999;  /* imitacja obudowy bankomatu */
+        border-radius: 25px;
+        width: 480px;
+        height: 620px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      }
+
+      /* Pasek ATM (góra) */
+      .atm-header {
+        background: #4a5055;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 15px 15px 0 0;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      /* Ekran wewnątrz bankomatu */
+      .atm-screen {
+        flex: 1;
+        background: #fff;
+        margin: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Kontener z wynikiem operacji – Twój dotychczasowy .result-container */
       .result-container {
         background: #fff;
         padding: 2rem;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        width: 400px;
-        max-width: 90%;
+        width: 100%;
+        max-width: 400px;
         text-align: center;
       }
       .result-container h2 {
@@ -52,13 +90,22 @@
     </style>
 </head>
 <body>
-    <div class="result-container">
-        <h2>Informacja</h2>
-        <p class="result-message">${msg}</p>
-        <p class="back-link">
-            <a href="home.jsp">Powrót do strony głównej</a>
-        </p>
+    <!-- Ramka bankomatu -->
+    <div class="atm-frame">
+        <!-- Pasek górny -->
+        <div class="atm-header">
+            Bankomat - Wynik operacji
+        </div>
+        <!-- Ekran wewnętrzny -->
+        <div class="atm-screen">
+            <div class="result-container">
+                <h2>Informacja</h2>
+                <p class="result-message">${msg}</p>
+                <p class="back-link">
+                    <a href="home.jsp">Powrót do strony głównej</a>
+                </p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
-
